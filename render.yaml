@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: tatva-api
+    runtime: python
+    plan: free
+    region: singapore
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT --workers 1
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      - key: GROQ_API_KEY
+        sync: false
+      - key: SLNG_API_KEY
+        sync: false
+      - key: SLNG_AGENT_ID
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
