@@ -1,0 +1,53 @@
+version: 1
+name: tatva-companion
+entry_agent: companion
+
+agents:
+  companion:
+    instructions: instructions.md
+    think: analysis_model
+    speak: tatva_voice
+    tools:
+      - end_call
+
+secrets:
+  - SLNG_API_KEY
+
+models:
+  think:
+    analysis_model:
+      description: SLNG-hosted session tutoring model for the India region
+      provider: openai
+      model: "openai/gpt-4.1-mini:latest"
+  speak:
+    tatva_voice:
+      description: expressive conversational voice
+      provider: slng
+      model: "cartesia/sonic:3"
+      voice: "043cfc81-d69f-4bee-ae1e-7862cb358650"
+      params:
+        world_part: ap-south
+  listen:
+    transcriber:
+      provider: slng
+      model: "deepgram/nova:3"
+      language: en
+      params:
+        world_part: ap-south
+
+tools:
+  - end_call
+
+conversation:
+  greeting:
+    speaks_first: agent
+    text: "Hi! I'm Tatva. I've reviewed your session and I'm ready to help. What would you like to explore?"
+
+channels:
+  web:
+    kind: realtime_audio
+
+capacity:
+  peak_sessions: 5
+  max_sessions: 10
+  avg_session_duration: 10m

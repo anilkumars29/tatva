@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { font-size: 16px; }
+  body {
+    @apply bg-surface font-sans text-neutral antialiased;
+    margin: 0;
+  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+}
+
+@layer components {
+  /* ── Buttons ─────────────────────────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white
+           font-semibold text-label-md rounded
+           hover:bg-primary-dark active:scale-[0.98]
+           transition-all duration-150 select-none cursor-pointer;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-border
+           text-neutral font-semibold text-label-md rounded
+           hover:bg-surface-container-low active:scale-[0.98]
+           transition-all duration-150 select-none cursor-pointer;
+  }
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-error text-white
+           font-semibold text-label-md rounded-full
+           hover:opacity-90 active:scale-[0.98]
+           transition-all duration-150 select-none cursor-pointer;
+  }
+  .btn-pill {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white
+           font-semibold text-label-md rounded-full shadow-level-2
+           hover:opacity-90 active:scale-[0.97]
+           transition-all duration-150 select-none cursor-pointer;
+  }
+
+  /* ── Cards ──────────────────────────────────────────────────────────────── */
+  .card {
+    @apply bg-white border border-border rounded-lg shadow-level-2
+           transition-shadow duration-200;
+  }
+  .card-header {
+    @apply px-5 py-4 border-b border-border/60 flex items-center gap-3;
+  }
+
+  /* ── Badge ──────────────────────────────────────────────────────────────── */
+  .badge-mode {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1
+           text-label-sm font-semibold rounded uppercase tracking-wide;
+  }
+  .badge-lesson { @apply bg-primary/10 text-primary-dark; }
+  .badge-speech { @apply bg-tertiary-container text-tertiary-dark; }
+  .badge-debate { @apply bg-error/10 text-error; }
+  .badge-discussion { @apply bg-secondary/10 text-secondary-dark; }
+
+  /* ── Skeleton shimmer ────────────────────────────────────────────────────── */
+  .skeleton {
+    @apply rounded bg-gradient-to-r from-surface-container via-surface-container-high to-surface-container;
+    background-size: 200% 100%;
+    animation: shimmer 1.8s linear infinite;
+  }
+
+  /* ── Live indicator ──────────────────────────────────────────────────────── */
+  .live-dot {
+    @apply inline-block w-2 h-2 rounded-full bg-secondary;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  /* ── Waveform bar ────────────────────────────────────────────────────────── */
+  .wave-bar {
+    @apply inline-block w-1 rounded-full bg-primary;
+    animation: waveform 1.2s ease-in-out infinite;
+  }
+}
