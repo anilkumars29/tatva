@@ -13,7 +13,7 @@
   </defs>
 
   <rect width="1400" height="780" fill="url(#bg)"/>
-  <text x="700" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Lumen - high-level architecture (from codebase)</text>
+  <text x="700" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Tatva - high-level architecture (from codebase)</text>
   <text x="700" y="58" text-anchor="middle" font-size="12" fill="#64748b">Main path: POST /api/generate streams NDJSON via generateLessonStream()</text>
 
   <!-- Client -->
