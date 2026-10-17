@@ -49,7 +49,7 @@ Ignite/
 │   │   └── api/              # Typed backend API client
 │   └── tailwind.config.js    # Design tokens matching Stitch design audit
 │
-├── bin/                      # UNMUTE CLI executable (v0.7.4)
+├── bin/                      # UNMUTE reference documentation and license
 ├── .env.example              # Environment variables template
 └── README.md
 ```
@@ -78,6 +78,7 @@ GROQ_MODEL=openai/gpt-oss-120b
 
 ```bash
 cd backend
+python -m pip install -r requirements.txt
 python -m uvicorn main:app --reload --port 8000
 ```
 
@@ -101,13 +102,13 @@ The companion package in `companion/` is fully verified with the UNMUTE compiler
 
 ```bash
 # Validate agent syntax, state schema, and SLNG targets
-.\bin\unmute.exe validate companion
+unmute validate companion
 
 # Compile to production SLNG deployment payload
-.\bin\unmute.exe compile companion
+unmute compile companion
 
 # Deploy to SLNG hosted cloud target
-.\bin\unmute.exe deploy companion --target slng
+unmute deploy companion --target slng
 ```
 
 Once deployed, copy the generated Agent ID into your `.env` as `SLNG_AGENT_ID`.
@@ -145,4 +146,5 @@ Once deployed, copy the generated Agent ID into your `.env` as `SLNG_AGENT_ID`.
 Session data is stored locally in SQLite; speech and selected session text are processed by configured cloud providers. This prototype has no production authentication. Speaking statistics are estimates, and the four session modes share analysis schemas. The companion uses bounded session context, not full-document retrieval. Live voice requires SLNG credentials; the companion additionally requires a deployed agent ID.
 
 Install UNMUTE and the SLNG voiceai CLI separately to deploy the companion. On Windows, use WSL for the Linux voiceai CLI. Executables, credentials, generated builds, recordings, and local session databases are excluded from this repository.
+
 
